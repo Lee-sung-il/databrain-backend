@@ -37,3 +37,4 @@ out/
 .vscode/
 docker-compose.yml
 application.yml
+db_data/
