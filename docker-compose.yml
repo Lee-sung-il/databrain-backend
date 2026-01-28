@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 1. MariaDB 서비스 정의
+  mariadb:
+    image: mariadb:10.11 # 안정적인 버전
+    container_name: databrain-db # 컨테이너 이름
+    restart: always
+    ports:
+      - "3306:3306" # [내컴퓨터 포트]:[도커내부 포트] 연결
+    environment:
+      MARIADB_DATABASE: databrain      # 자동으로 생성될 DB 이름
+      MARIADB_ROOT_PASSWORD: password  # 루트 비밀번호 (개발용)
+      MARIADB_USER: root               # 계정 아이디
+      MARIADB_PASSWORD: jw132612!       # 계정 비밀번호
+      TZ: Asia/Seoul                   # 한국 시간 설정
+    volumes:
+      - ./db_data:/var/lib/mysql       # 중요! DB 데이터를 내 컴퓨터 폴더에 저장 (재부팅해도 안 날아가게)
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # 한글/이모지 깨짐 방지
+
+  # 2. Redis (나중에 세션/토큰 저장용, 미리 세팅)
+  redis:
+    image: redis:alpine
+    container_name: databrain-redis
+    ports:
+      - "6379:6379"
