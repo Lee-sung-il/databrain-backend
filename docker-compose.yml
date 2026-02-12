@@ -8,9 +8,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      # [핵심] 스프링 설정(application.yml)과 똑같은 비밀번호여야 합니다!
       MARIADB_ROOT_PASSWORD: jw132612!
-
       MARIADB_DATABASE: databrain
       TZ: Asia/Seoul
     volumes:
@@ -22,5 +20,20 @@ services:
   redis:
     image: redis:alpine
     container_name: databrain-redis
+    restart: always
     ports:
       - "6379:6379"
+
+  # [추가] 오픈소스 번역 엔진 LibreTranslate
+  libretranslate:
+    image: libretranslate/libretranslate
+    container_name: databrain-translate
+    restart: always
+    ports:
+      - "5001:5000"
+    environment:
+      # 영어, 한국어, 일본어, 중국어 모델만 로드 (메모리 절약)
+      - LT_LOAD_ONLY=en,ko,ja,zh
+    volumes:
+      - ./lt_data:/home/libretranslate/.local # 모델 파일을 로컬에 저장해 재시작 시 다운로드 방지
+    # 처음 실행 시 언어 모델 다운로드에 시간이 걸리므로 넉넉하게 기다려주세요.
