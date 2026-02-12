@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 //    select * from user where email = ? 쿼리를 자동으로 만들어줌
-    Optional<User> findByEmail(String nickname);
+    Optional<User> findByEmail(String email);
 
 //    select count(*) from users where email = ?
     boolean existsByEmail(String email);

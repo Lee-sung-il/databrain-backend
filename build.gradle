@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '4.0.2'
+    id 'org.springframework.boot' version '4.0.2' // 신입님 버전 존중
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -19,16 +19,34 @@ repositories {
 }
 
 dependencies {
+    // 1. 필수 기본 도구
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+
+    // [수정] webmvc 대신 web을 쓰는 게 표준입니다. (이건 바꾸는 게 좋아요)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // [필수 추가] 이게 없으면 로그인/비밀번호 암호화가 불가능합니다!
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // 2. DB 연결
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    // 3. 편의 도구
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // 4. 테스트 도구
     testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-web' // webmvc-test 대신 web으로
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // 5. JWT 토큰 도구
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 }
 
 tasks.named('test') {
