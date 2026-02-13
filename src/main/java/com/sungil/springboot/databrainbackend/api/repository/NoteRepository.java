@@ -1,7 +1,7 @@
 package com.sungil.springboot.databrainbackend.api.repository;
 
 import com.sungil.springboot.databrainbackend.api.domain.Note;
-import com.sungil.springboot.databrainbackend.api.domain.User;
+import com.sungil.springboot.databrainbackend.api.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

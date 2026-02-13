@@ -1,5 +1,7 @@
 package com.sungil.springboot.databrainbackend.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sungil.springboot.databrainbackend.api.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -21,6 +23,8 @@ public class Note {
     private String titleZh; @Column(columnDefinition = "TEXT") private String contentZh;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore  // [추가] 스웨거와 JSON 변환 시 이 필드는 무시하도록 설정
     private User user;
     private LocalDateTime createdAt;
 

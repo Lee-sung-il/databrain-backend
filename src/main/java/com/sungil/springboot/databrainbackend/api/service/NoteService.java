@@ -1,6 +1,7 @@
 package com.sungil.springboot.databrainbackend.api.service;
 
 import com.sungil.springboot.databrainbackend.api.domain.*;
+import com.sungil.springboot.databrainbackend.api.domain.user.User;
 import com.sungil.springboot.databrainbackend.api.dto.*;
 import com.sungil.springboot.databrainbackend.api.repository.*;
 import lombok.RequiredArgsConstructor;

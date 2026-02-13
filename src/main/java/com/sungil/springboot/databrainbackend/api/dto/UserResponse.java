@@ -1,7 +1,7 @@
 package com.sungil.springboot.databrainbackend.api.dto;
 
 import com.sungil.springboot.databrainbackend.api.domain.Language;
-import com.sungil.springboot.databrainbackend.api.domain.User;
+import com.sungil.springboot.databrainbackend.api.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -1,5 +1,7 @@
-package com.sungil.springboot.databrainbackend.api.domain;
+package com.sungil.springboot.databrainbackend.api.domain.user;
 
+import com.sungil.springboot.databrainbackend.api.domain.Language;
+import com.sungil.springboot.databrainbackend.api.domain.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

@@ -2,7 +2,7 @@ package com.sungil.springboot.databrainbackend.api.dto;
 
 import com.sungil.springboot.databrainbackend.api.domain.Language;
 import com.sungil.springboot.databrainbackend.api.domain.Role;
-import com.sungil.springboot.databrainbackend.api.domain.User;
+import com.sungil.springboot.databrainbackend.api.domain.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
